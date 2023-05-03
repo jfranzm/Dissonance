@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
+import LineIcon from "react-lineicons";
 
 // Components
 import AuthPage from '../AuthPage/AuthPage';

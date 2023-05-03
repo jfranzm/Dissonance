@@ -49,18 +49,15 @@ export default function SignUpForm({ setUser }){
 
     return <div className='SignUpForm'>
             <div className="form-container">
+                <h1>Sign Up</h1>
                 <form onSubmit={handleSubmit} autoComplete="off">
-                    <label htmlFor="username">Username</label>
-                    <input type="text" name="username" id="username" value={username} onChange={handleChange} required/>
+                    <input type="text" name="username" id="username" placeholder='Username' value={username} onChange={handleChange} required/>
 
-                    <label htmlFor="email">Email</label>
-                    <input type="text" name="email" id="email" value={email} onChange={handleChange} required />
+                    <input type="text" name="email" id="email" placeholder='Email' value={email} onChange={handleChange} required />
 
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password" value={password} onChange={handleChange} required />
+                    <input type="password" name="password" id="password" placeholder='Password' value={password} onChange={handleChange} required />
 
-                    <label htmlFor="confirm">Confirm Password</label>
-                    <input type="password" name="confirm" id="confirm" value={confirm} onChange={handleChange} required />
+                    <input type="password" name="confirm" id="confirm" placeholder='Confirm Password' value={confirm} onChange={handleChange} required />
 
                     <button type="submit" disabled={disabled}>Sign up</button>
                 </form>
