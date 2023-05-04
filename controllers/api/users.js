@@ -14,9 +14,9 @@ async function create (req, res, next){
 async function login(req, res, next) {
     try {
         const pw = req.body.password;
-        const email = req.body.email;
+        const username = req.body.username;
 
-        const user = await User.findOne({email})
+        const user = await User.findOne({username})
 
         if(user && isValidPassword(pw, user.password)){
             const token = createJWT(user)

@@ -18,16 +18,14 @@ export function getToken() {
     return token;
 }
 
-export function checkToken() {
-    return usersAPI.checkToken()
-        .then(dateStr => new Date(dateStr));
-}
-// Convert the token payload to a js obj OR retun null when no token
+
 export function getUser() {
     const token = getToken();
-    if (!token) return null
-    return JSON.parse(window.atob(token.split('.')[1])).user
-}
+    return token ?
+      JSON.parse(atob(token.split('.')[1])).user
+      :
+      null;
+  }
 
 // SETS THE TOKEN IN LOCAL STORE FOR US
 export async function signUp(formData){
