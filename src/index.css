@@ -16,11 +16,11 @@ code {
 /* CSS Custom Properties */
 :root {
   --white: #FFFFFF;
-  --tan-1: #FBF9F6;
-  --tan-2: #E7E2DD;
-  --tan-3: #E2D9D1;
-  --tan-4: #D3C1AE;
-  --orange: #F67F00;
+  --bluegray: #50575c;
+  --gray-1: #e6e7e7;
+  --gray-2: #cdcfd0;
+  --gray-3: #b4b7b9;
+  --orange: orange;
   --text-light: #968c84;
   --text-dark: #615954;
 }
@@ -38,7 +38,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  background-color: var(--bluegray);
   padding: 2vmin;
   height: 100vh;
 }
@@ -86,9 +86,9 @@ code {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: var(--tan-1);
+  background-color: var(--gray-1);
   color: var(--text-dark);
-  border: .1vmin solid var(--tan-3);
+  border: .1vmin solid var(--gray-3);
   border-radius: 1vmin;
   padding: .6vmin;
   text-align: center;
@@ -96,10 +96,10 @@ code {
 }
 
 .form-container {
-  padding: 3vmin;
-  background-color: var(--tan-1);
-  border: .1vmin solid var(--tan-3);
-  border-radius: 1vmin;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
 }
 
 p.error-message {
@@ -108,9 +108,13 @@ p.error-message {
 }
 
 form {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1.25vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px 20px;
+  height: 100%;
+  text-align: center;
   color: var(--text-light);
 }
 
@@ -121,18 +125,16 @@ label {
 }
 
 input {
-  padding: 1vmin;
-  font-size: 2vmin;
-  border: .1vmin solid var(--tan-3);
-  border-radius: .5vmin;
-  color: var(--text-dark);
-  background-image: none !important;
-  /* prevent lastpass */
-  outline: none;
+  background-color: #eee;
+  border-radius: 10px;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
 }
 
 input:focus {
-  border-color: var(--orange);
+  border-color: var(--bluegray);
 }
 
 button,
@@ -140,12 +142,12 @@ a.button {
   margin: 1vmin;
   padding: 1vmin;
   color: var(--white);
-  background-color: var(--orange);
+  background-color: var(--gray-2);
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  border: .1vmin solid var(--tan-2);
+  border: .1vmin solid var(--gray-2);
   border-radius: .5vmin;
   outline: none;
   cursor: pointer;
@@ -164,10 +166,13 @@ button.btn-xs {
 button:disabled,
 form:invalid button[type="submit"] {
   cursor: not-allowed;
-  background-color: var(--tan-4);
+  background-color: var(--gray-2);
 }
 
 button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
 }
+
+
+

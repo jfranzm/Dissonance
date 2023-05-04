@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { login } from '../../utilities/services/users'
 
 const defaultState = {
-    name: '',
+    username: '',
     password: '',
     error: ''
 }
@@ -10,7 +10,7 @@ const defaultState = {
 export default function LoginForm({ setUser }) {
     const [formData, setFormData] = useState(defaultState)
 
-    const { email, password, error } = formData;
+    const { username, password, error } = formData;
 
     const handleSubmit = async (e) => {
         // when we submit we basically just grab whatever we have in
@@ -18,13 +18,10 @@ export default function LoginForm({ setUser }) {
         e.preventDefault();
 
         try {
-            const {  password, email } = formData;
-            const data = {  password, email }
+            const {  password, username } = formData;
+            const data = {  password, username }
 
             const user = await login(data)
-            // as soon as we get the decoded data from the creat account api call
-            // (derived fromt he jwt in local storage), we can update app.js to store
-            // user in state
             setUser(user)
         } catch (err) {
             setFormData({
@@ -45,17 +42,14 @@ export default function LoginForm({ setUser }) {
         setFormData(newFormData);
     }
 
-    const disabled = !email || !password
+    const disabled = !username || !password
 
     return <div className='LoginForm'>
         <div className="form-container">
+            <h1>Login</h1>
             <form onSubmit={handleSubmit} autoComplete="off">
-                <label htmlFor="email">Email</label>
-                <input type="text" name="email" id="email" value={email} onChange={handleChange} required />
-
-                <label htmlFor="password">Password</label>
-                <input type="password" name="password" id="password" value={password} onChange={handleChange} required />
-
+                <input type="text" name="username" id="username" placeholder='Username' value={username} onChange={handleChange} required />
+                <input type="password" name="password" id="password" placeholder='Password' value={password} onChange={handleChange} required />
                 <button type="submit" disabled={disabled}>Log In</button>
             </form>
         </div>

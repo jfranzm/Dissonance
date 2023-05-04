@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { signUp } from '../../utilities/services/users'
 
 const defaultState = {
-    name: '',
+    username: '',
     email: '',
     password: '',
     confirm: '',
@@ -12,7 +12,7 @@ const defaultState = {
 export default function SignUpForm({ setUser }){
     const [formData, setFormData] = useState(defaultState)
 
-    const { name, email, password, confirm, error } = formData;
+    const { username, email, password, confirm, error } = formData;
 
     const handleSubmit = async (e) =>{
         // when we submit we basically just grab whatever we have in
@@ -20,8 +20,8 @@ export default function SignUpForm({ setUser }){
         e.preventDefault();
 
         try{
-            const { name, password, email } = formData;
-            const data = {name, password, email}
+            const { username, password, email } = formData;
+            const data = {username, password, email}
 
             const user = await signUp(data)
             // as soon as we get the decoded data from the creat account api call
@@ -36,40 +36,28 @@ export default function SignUpForm({ setUser }){
         }
     }
 
-
-    // const handleChange = (e) => {
-    //     const newFormData = { ...formData, [e.target.name]: e.target.value }
-    //     window.alert( JSON.stringify(newFormData ) )
-    //     setFormData(newFormData)
-    // }
-
     function handleChange(evt) {
-        // Replace with new object and use a computed property
-        // to update the correct property
         const newFormData = {
             ...formData, // use the existing formData
             [evt.target.name]: evt.target.value, // override whatever key with the current fieldd's value
-            error: '' // clear any old errors as soon as the user interacts with the form
+            error: '' 
         };
         setFormData(newFormData);
     }
 
-    const disabled = (password !== confirm) || !name || !email || !password || !confirm
+    const disabled = (password !== confirm) || !username || !email || !password || !confirm
 
     return <div className='SignUpForm'>
             <div className="form-container">
+                <h1>Sign Up</h1>
                 <form onSubmit={handleSubmit} autoComplete="off">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" name="name" id="name" value={name} onChange={handleChange} required/>
+                    <input type="text" name="username" id="username" placeholder='Username' value={username} onChange={handleChange} required/>
 
-                    <label htmlFor="email">Email</label>
-                    <input type="text" name="email" id="email" value={email} onChange={handleChange} required />
+                    <input type="text" name="email" id="email" placeholder='Email' value={email} onChange={handleChange} required />
 
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password" value={password} onChange={handleChange} required />
+                    <input type="password" name="password" id="password" placeholder='Password' value={password} onChange={handleChange} required />
 
-                    <label htmlFor="confirm">Confirm Password</label>
-                    <input type="password" name="confirm" id="confirm" value={confirm} onChange={handleChange} required />
+                    <input type="password" name="confirm" id="confirm" placeholder='Confirm Password' value={confirm} onChange={handleChange} required />
 
                     <button type="submit" disabled={disabled}>Sign up</button>
                 </form>
