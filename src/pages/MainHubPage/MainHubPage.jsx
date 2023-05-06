@@ -1,6 +1,5 @@
 import './MainHubPage.css'
 import FriendList from '../../components/FriendList/FriendList'
-
 export default function MainHubPage() {
     return (
         <main className="MainHubPage">
