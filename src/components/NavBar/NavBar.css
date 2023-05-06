@@ -4,4 +4,5 @@ nav {
     height: 5rem;
     display: flex;
     justify-content: flex-start;
+    text-decoration: none;
 }

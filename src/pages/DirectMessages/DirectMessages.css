@@ -1,0 +1,38 @@
+body {
+    padding: 0;
+}
+
+.DirectMessage {
+    display: flex;
+    --darkblue: #25282c;
+    --darkgray: #3f4449;
+    height: 100vh;
+}
+
+.chat-container {
+    background-color: var(--darkgray);
+    width: 100%;
+    color: #d8d8d8;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info-bar {
+    background-color: #32383C;
+    height: 8%;
+    display: flex;
+}
+
+.user-info {
+    border: 1px solid red;
+    height: 20%;
+    display: flex;
+    gap: 20px;
+    left: 2vw;
+}
+.pfp {
+    background-color: white;
+    height: 10vh;
+    width: 10vw;
+    border-radius: 100%;
+}
