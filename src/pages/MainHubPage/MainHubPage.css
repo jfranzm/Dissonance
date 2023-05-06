@@ -1,0 +1,30 @@
+body {
+    padding: 0;
+}
+.MainHubPage {
+    display: flex;
+    --darkblue: #25282c;
+    --darkgray: #3f4449;
+    height: 100vh;
+}
+
+.content-container {
+    background-color: var(--darkgray);
+    width: 100%;
+    color: #d8d8d8;
+    display: flex;
+    flex-direction: column;
+}
+
+.fav-list {
+    height: 25%;
+    font-size: 1.2rem;
+}
+
+.games-list {
+    font-size: 1.8rem;
+}
+.sect-name {
+    text-align: left;
+    padding-left: 3rem;
+}

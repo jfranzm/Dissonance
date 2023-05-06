@@ -1,0 +1,7 @@
+nav {
+    width: 100%;
+    background-color: var(--bluegray);
+    height: 5rem;
+    display: flex;
+    justify-content: flex-start;
+}
