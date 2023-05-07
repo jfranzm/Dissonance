@@ -6,7 +6,10 @@ body {
     display: flex;
     --darkblue: #25282c;
     --darkgray: #3f4449;
-    height: 100vh;
+    height: 92.5vh;
+}
+.chat-box {
+    overflow-y: scroll;
 }
 
 .chat-container {
@@ -21,18 +24,46 @@ body {
     background-color: #32383C;
     height: 8%;
     display: flex;
+    padding-left: 2vw;
 }
 
 .user-info {
-    border: 1px solid red;
     height: 20%;
     display: flex;
     gap: 20px;
-    left: 2vw;
+    padding: 3vh 0 0 40px;
+    margin-bottom: 3vh;
 }
 .pfp {
     background-color: white;
-    height: 10vh;
-    width: 10vw;
+    height: 80px;
+    width: 80px;
     border-radius: 100%;
+}
+
+.chat-box-bottom {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #34383C;
+    height: 70px;
+}
+
+.chat-input {
+    width: 100%;
+    background-color: #181A1C;
+    color: var(--gray-1);
+    border-radius: 30px;
+    padding: 10px;
+    margin: 5px;
+    
+}
+
+
+
+.chat-box-top {
+    height: 100%;
+
 }

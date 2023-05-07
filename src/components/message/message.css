@@ -1,0 +1,36 @@
+.message {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.message-top {
+    display: flex;
+    align-items: baseline;
+    
+}
+
+.message-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 10px;
+    margin-left: 20px;
+    
+}
+
+.message-text {
+    max-width: 400px;
+    padding: 10px;
+}
+
+.message-time {
+    font-size: 12px;
+    align-items: flex-end;
+}
+
+.message.own {
+    align-items: flex-end;
+}
+
