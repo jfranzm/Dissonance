@@ -8,5 +8,9 @@ router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 router.get('/check-token', usersCtrl.checkToken);
 router.post('/', usersCtrl.create);
 router.post('/login', usersCtrl.login);
+router.put('/:id', usersCtrl.updateUser);
+router.delete('/:id', usersCtrl.deleteUser);
+router.put('/:id/friend', usersCtrl.friendUser);
+router.put('/:id/unfriend', usersCtrl.unfriendUser);
 
 module.exports = router

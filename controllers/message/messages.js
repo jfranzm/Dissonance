@@ -16,7 +16,7 @@ async function create(req, res) {
 async function recall(req, res) {
     try {
         const messages = await Message.find({
-            chatsId: req.params.chatsId,
+            chatId: req.params.chatId,
         });
         res.status(200).json(messages);
     } catch (err) {

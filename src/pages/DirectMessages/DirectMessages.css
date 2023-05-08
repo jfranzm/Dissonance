@@ -46,9 +46,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 80%;
     background-color: #34383C;
     height: 70px;
+    position: fixed;
+    bottom: 0;
 }
 
 .chat-input {

@@ -14,7 +14,6 @@ import './App.css';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-
   return (
     <main className="App">
       { user ?
@@ -22,7 +21,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
             <Routes>
               <Route path="/" element={<MainHubPage />} />
-              <Route path="/directmessage" element={<DirectMessages />}/>
+              <Route path="/directmessage" element={<DirectMessages user={user}/>}/>
             </Routes>
           </>
           :

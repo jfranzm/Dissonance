@@ -5,4 +5,5 @@ nav {
     display: flex;
     justify-content: flex-start;
     text-decoration: none;
+    position: fixed;
 }

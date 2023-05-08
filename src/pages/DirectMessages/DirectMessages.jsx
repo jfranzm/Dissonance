@@ -1,7 +1,11 @@
 import './DirectMessages.css';
 import FriendList from '../../components/FriendList/FriendList';
 import Message from '../../components/message/message';
-export default function DirectMessages() {
+import { useState, useEffect, useRef } from "react";
+import axios from 'axios';
+
+export default function DirectMessages({user}) {
+    
     return (
         <div className='DirectMessage'>
             <FriendList />
@@ -20,9 +24,7 @@ export default function DirectMessages() {
                             <Message own={true}/>
                             <Message />
                             <Message own={true}/>
-                            <Message />
-                            <Message />
-                            <Message />
+                            
 
                         </div>
                     </div>
