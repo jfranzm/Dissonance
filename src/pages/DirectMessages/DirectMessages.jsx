@@ -8,7 +8,7 @@ export default function DirectMessages({user}) {
     
     return (
         <div className='DirectMessage'>
-            <FriendList />
+            <FriendList user={user}/>
             <div className='chat-container'>
                 <div className='user-info-bar'>
                     <h2>User1</h2>

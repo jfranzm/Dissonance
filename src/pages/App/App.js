@@ -20,7 +20,7 @@ export default function App() {
           <>
           <NavBar user={user} setUser={setUser} />
             <Routes>
-              <Route path="/" element={<MainHubPage />} />
+              <Route path="/" element={<MainHubPage user={user}/>} />
               <Route path="/directmessage" element={<DirectMessages user={user}/>}/>
             </Routes>
           </>
