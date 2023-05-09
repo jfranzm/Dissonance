@@ -78,15 +78,15 @@ async function friendUser(req, res) {
             if (!user.friends.includes(req.body.userId)) {
                 await user.updateOne({$push: {friends: req.body.userId}});
                 await currentUser.updateOne({$push: {friends: req.params.id}});
-                res.status(200).json("user has been friended");
+                res.status(200).json("user has been added as a friend");
             } else {
-                res.status(403).json("you already follow this user");
+                res.status(403).json("you are already friends with this user");
             }
         } catch(err) {
             res.status(500).json(err);
         }
     } else {
-        res.status(403).json("you can't follow yourself");
+        res.status(403).json("you can't be friends with yourself");
     }
 };
 
@@ -98,7 +98,7 @@ async function unfriendUser(req, res){
             if (user.friends.includes(req.body.userId)) {
                 await user.updateOne({$pull: {friends: req.body.userId}});
                 await currentUser.updateOne({$pull: {friends: req.params.id}});
-                res.status(200).json("user has been unfriended");
+                res.status(200).json("you are not longer friends with this user");
             } else {
                 res.status(403).json("you're not friends with this user");
             }
@@ -106,7 +106,7 @@ async function unfriendUser(req, res){
             res.status(500).json(err);
         }
     } else {
-        res.status(403).json("you can't unfriend yourslef")
+        res.status(403).json("you can't unfriend yourself")
     }
 }
 module.exports = {

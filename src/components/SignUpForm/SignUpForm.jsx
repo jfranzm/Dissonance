@@ -24,9 +24,7 @@ export default function SignUpForm({ setUser }){
             const data = {username, password, email}
 
             const user = await signUp(data)
-            // as soon as we get the decoded data from the creat account api call
-            // (derived fromt he jwt in local storage), we can update app.js to store
-            // user in state
+           
             setUser(user)
         }catch (err) {
             setFormData({
