@@ -4,12 +4,15 @@ import Message from '../../components/message/message';
 import Chat from '../../components/Chat/Chat';
 import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
+import {io} from "socket.io-client";
 
 export default function DirectMessages({user}) {
     const [chats, setChats] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
+    const [arrivalMessage, setArrivalMessage] = useState(null);
+    const socket = useRef()
     const scrollRef = useRef();
 
     const handleSubmit = async (e) => {
@@ -19,6 +22,15 @@ export default function DirectMessages({user}) {
             text: newMessage,
             chatId: currentChat._id
         };
+
+        const receiverId = currentChat.members.find(member => member !== user._id);
+
+        socket.current.emit("sendMessage", {
+            senderId: user._id,
+            receiverId,
+            text: newMessage,
+        });
+        
         try {
             const res = await axios.post("api/messages", message);
             setMessages([...messages, res.data]);
@@ -39,7 +51,6 @@ export default function DirectMessages({user}) {
         };
         getChats();
     }, [user._id])
-    console.log(currentChat);
 
     // return messages
     useEffect(() => {
@@ -54,11 +65,37 @@ export default function DirectMessages({user}) {
         getMessages();
     }, [currentChat]);
 
-    console.log(messages);
 
+    // scroll ref to bottom of messages
     useEffect(() => {
         scrollRef.current?.scrollIntoView({behaviour: "smooth"});
     },[messages])
+
+    // sockets
+    useEffect(() => {
+        socket.current = io("ws://localhost:8900");
+        socket.current.on("getMessage", data => {
+            setArrivalMessage({
+                sender: data.senderId,
+                text: data.text,
+                createdAt: Date.now(),
+            })
+        })
+    }, []);
+    // live appending of chat
+    useEffect(() => {
+        arrivalMessage && currentChat?.members.includes(arrivalMessage.sender) &&
+        setMessages((prev) => [...prev, arrivalMessage]);
+    }, [arrivalMessage, currentChat]);
+
+    useEffect(() => {
+        socket.current.emit("addUser", user._id);
+        socket.current.on("getUsers", users => {
+            console.log(users);
+    })
+   }, [user])
+    
+  
     return (
         <>
             <div className='DirectMessage'>
