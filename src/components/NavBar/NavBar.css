@@ -1,9 +1,12 @@
 nav {
     width: 100%;
     background-color: var(--bluegray);
-    height: 5rem;
+    height: 50px;
     display: flex;
+    align-items: center;
+    position: sticky;
     justify-content: flex-start;
     text-decoration: none;
-    position: fixed;
+    top: 0;
+    z-index: 999;
 }

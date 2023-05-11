@@ -4,6 +4,8 @@ import axios from 'axios';
 import Chat from '../Chat/Chat';
 export default function FriendList({user}) {
     const [chats, setChats] = useState([]);
+    const [currentChat, setCurrentChat] = useState(null);
+
     useEffect(() => {
         const getChats = async() => {
             try {
@@ -15,11 +17,14 @@ export default function FriendList({user}) {
         };
         getChats();
     }, [user._id])
+    console.log(currentChat);
     return (
     <div className="friend-bar">
         <h3 className='friend-title'>Friends</h3>
             {chats.map(chat => (
-                <Chat chat={chat} currentUser={user}/>
+                <div onClick={()=> setCurrentChat(chat)}>
+                    <Chat chat={chat} currentUser={user}/>
+                </div>
             ))}
     </div>
     )
