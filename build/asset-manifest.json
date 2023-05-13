@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3369f5cc.css",
+    "main.js": "/static/js/main.318b9e2f.js",
+    "static/media/Dissonance_logo.jpg": "/static/media/Dissonance_logo.efc24a039471654873bf.jpg",
+    "index.html": "/index.html",
+    "static/media/Minimalistic logo dark theme.svg": "/static/media/Minimalistic logo dark theme.baba9e27468edde48ef7d087c463cf95.svg",
+    "main.3369f5cc.css.map": "/static/css/main.3369f5cc.css.map",
+    "main.318b9e2f.js.map": "/static/js/main.318b9e2f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3369f5cc.css",
+    "static/js/main.318b9e2f.js"
+  ]
+}
