@@ -89,7 +89,7 @@ export default function DirectMessages({user}) {
 
     // sockets
     useEffect(() => {
-        socket.current = io("ws://dissonancechat.herokuapp.com/directmessage");
+        socket.current = io("https://dissonancechat.herokuapp.com/directmessage");
         socket.current.on("getMessage", data => {
             setArrivalMessage({
                 sender: data.senderId,
