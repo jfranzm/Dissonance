@@ -1,0 +1,4 @@
+.favourites-list {
+    display: flex;
+    flex-direction: row;
+}

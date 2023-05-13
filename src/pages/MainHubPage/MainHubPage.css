@@ -28,3 +28,35 @@ body {
     text-align: left;
     padding-left: 3rem;
 }
+
+.tictactoe {
+    height: 120px;
+    width: 120px;
+    background-color: white;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    transition: .1s;
+    box-shadow: 0 5px 1rem rgba(0, 0, 0, 0.3);
+
+}
+
+.games {
+    margin-left: 40px;
+    display: flex;
+}
+
+.game-box {
+    border-radius: 7%;
+}
+
+.game-box:hover {
+    transform: scale(1.05);
+    transition: .1s;
+}
+
+.game-title {
+    font-size: large;
+    color: white;
+}

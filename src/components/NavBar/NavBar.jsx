@@ -8,10 +8,10 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav>
+    <nav className='navbar'>
       <MinLogo />
       &nbsp; &nbsp;
-      <span className="name">Hey there {user.username}!</span>
+      
       &nbsp; &nbsp; <Link to="" onClick={handleLogOut}>Log Out</Link>
 
     </nav>

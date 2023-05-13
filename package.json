@@ -22,7 +22,10 @@
     "serve-favicon": "^2.5.0",
     "socket.io": "^4.6.1",
     "socket.io-client": "^4.6.1",
+    "stream-chat": "^8.6.0",
+    "stream-chat-react": "^10.8.0",
     "timeago.js": "^4.0.2",
+    "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
