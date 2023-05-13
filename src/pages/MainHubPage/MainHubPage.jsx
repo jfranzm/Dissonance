@@ -1,9 +1,10 @@
 import './MainHubPage.css'
 import FriendList from '../../components/FriendList/FriendList'
-export default function MainHubPage() {
+export default function MainHubPage({user}) {
+    console.log(user);
     return (
         <main className="MainHubPage">
-            <FriendList />
+            <FriendList user={user}/>
             <div className="content-container">
                 <div className="fav-list">
                     <h3 className='sect-name'>Favourites</h3>

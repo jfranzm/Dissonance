@@ -9,7 +9,8 @@ require('dotenv').config();
 require('./config/database');
 
 const userRouter = require('./routes/api/users')
-
+const chatRouter = require('./routes/api/chats');
+const messageRouter = require('./routes/api/messages')
 const app = express();
 
 app.use(logger('dev'));
@@ -22,8 +23,9 @@ if( process.env.NODE_ENV === 'production'){
 
 // API routes here
 app.use(require('./config/checkToken'));
-app.use('/api/users', userRouter)
-
+app.use('/api/users', userRouter);
+app.use('/api/chats', chatRouter);
+app.use('/api/messages', messageRouter);
 // "Catch all" route
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));

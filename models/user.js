@@ -18,7 +18,23 @@ const userSchema = new Schema({
         minLength: 3,
         required: true
     },
-    friends: [{type: Schema.Types.ObjectId, ref: 'Friends'}]
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
+    profilePicture: {
+        type: String,
+        default: "",
+    },
+    followers: {
+        type: Array,
+        default: [],
+    },
+    followings: {
+        type: Array,
+        default: [],
+    }
+    
 }, {
     timestamps: true,
     toJSON:{
