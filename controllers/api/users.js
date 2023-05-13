@@ -70,43 +70,62 @@ async function deleteUser(req, res) {
     }
 };
 
-async function friendUser(req, res) {
+async function getFriends(req, res) {
+    try {
+        const user = await User.findById(req.params.userId);
+        const friends = await Promise.all(
+            user.followings.map((friendId) => {
+                return User.findById(friendId);
+            })
+        );
+        let friendList = [];
+        friends.map((friend) => {
+            const {_id, username, profilePicture} = friend;
+            friendList.push({_id, username, profilePicture})
+        });
+        res.status(200).json(friendList);
+    } catch(err) {
+        res.status(500).json(err);
+    };
+};
+
+async function followUser(req, res) {
     if (req.body.userId !== req.params.id) {
         try {
             const user = await User.findById(req.params.id);
             const currentUser = await User.findById(req.body.userId);
-            if (!user.friends.includes(req.body.userId)) {
-                await user.updateOne({$push: {friends: req.body.userId}});
-                await currentUser.updateOne({$push: {friends: req.params.id}});
-                res.status(200).json("user has been added as a friend");
+            if (!user.followers.includes(req.body.userId)) {
+                await user.updateOne({$push: {followers: req.body.userId}});
+                await currentUser.updateOne({$push: {followings: req.params.id}});
+                res.status(200).json("user has been followed");
             } else {
-                res.status(403).json("you are already friends with this user");
+                res.status(403).json("you already follow this user");
             }
         } catch(err) {
             res.status(500).json(err);
         }
     } else {
-        res.status(403).json("you can't be friends with yourself");
+        res.status(403).json("you can't follow yourself");
     }
 };
 
-async function unfriendUser(req, res){
+async function unfollowUser(req, res){
     if (req.body.userId !== req.params.id) {
         try {
             const user = await User.findById(req.params.id);
             const currentUser = await User.findById(req.params.userId);
             if (user.friends.includes(req.body.userId)) {
-                await user.updateOne({$pull: {friends: req.body.userId}});
-                await currentUser.updateOne({$pull: {friends: req.params.id}});
-                res.status(200).json("you are not longer friends with this user");
+                await user.updateOne({$pull: {followers: req.body.userId}});
+                await currentUser.updateOne({$pull: {followings: req.params.id}});
+                res.status(200).json("user has been unfollowed");
             } else {
-                res.status(403).json("you're not friends with this user");
+                res.status(403).json("you don't follow this user");
             }
         } catch(err) {
             res.status(500).json(err);
         }
     } else {
-        res.status(403).json("you can't unfriend yourself")
+        res.status(403).json("you can't unfollow yourself")
     }
 }
 
@@ -122,13 +141,15 @@ async function userInfo(req, res) {
     }
 }
 
+
 module.exports = {
     create,
     login,
     checkToken,
     updateUser,
     deleteUser,
-    friendUser,
-    unfriendUser,
+    getFriends,
+    followUser,
+    unfollowUser,
     userInfo,
 }

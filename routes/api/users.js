@@ -11,6 +11,8 @@ router.post('/', usersCtrl.create);
 router.post('/login', usersCtrl.login);
 router.put('/:id', usersCtrl.updateUser);
 router.delete('/:id', usersCtrl.deleteUser);
-router.put('/:id/friend', usersCtrl.friendUser);
-router.put('/:id/unfriend', usersCtrl.unfriendUser);
+router.get('/friends/:userId', usersCtrl.getFriends);
+router.put('/:id/follow', usersCtrl.followUser);
+router.put('/:id/unfollow', usersCtrl.unfollowUser);
+
 module.exports = router

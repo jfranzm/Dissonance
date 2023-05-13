@@ -1,7 +1,7 @@
 import './DirectMessages.css';
-import FriendList from '../../components/FriendList/FriendList';
 import Message from '../../components/message/message';
 import Chat from '../../components/Chat/Chat';
+import ChatOnline from '../../components/ChatOnline/ChatOnline';
 import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import {io} from "socket.io-client";
@@ -9,9 +9,11 @@ import {io} from "socket.io-client";
 export default function DirectMessages({user}) {
     const [chats, setChats] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
+    const [chatUser, setChatUser] = useState(null)
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
     const [arrivalMessage, setArrivalMessage] = useState(null);
+    const [onlineUsers, setOnlineUsers] = useState([]);
     const socket = useRef()
     const scrollRef = useRef();
 
@@ -71,6 +73,20 @@ export default function DirectMessages({user}) {
         scrollRef.current?.scrollIntoView({behaviour: "smooth"});
     },[messages])
 
+    // return sender's username 
+    useEffect(async () => {
+        const friendId = currentChat?.members.find(member => member !== user._id);
+        const findUser = async () => {
+            try {
+                const res = await axios("/api/users?userId=" + friendId);
+                setChatUser(res.data);
+            } catch(err) {
+                console.log(err);
+            }
+        };
+        findUser();
+    }, [currentChat])
+
     // sockets
     useEffect(() => {
         socket.current = io("ws://localhost:8900");
@@ -91,16 +107,18 @@ export default function DirectMessages({user}) {
     useEffect(() => {
         socket.current.emit("addUser", user._id);
         socket.current.on("getUsers", users => {
-            console.log(users);
+            setOnlineUsers(users.followings.filter(following => users.some(user => user.userId === following)));
     })
    }, [user])
     
+   
   
     return (
         <>
             <div className='DirectMessage'>
                 <div className="friend-bar">
                     <h3 className='friend-title'>Friends</h3>
+                        <ChatOnline onlineUsers={onlineUsers} currentId={user._id} setCurrentChat={setCurrentChat}/>
                         {chats.map(chat => (
                             <div onClick={()=> setCurrentChat(chat)}>
                                 <Chat chat={chat} currentUser={user}/>
@@ -113,11 +131,11 @@ export default function DirectMessages({user}) {
                                 currentChat ?
                                 <>
                                 <div className='user-info-bar'>
-                                    <h2>{user?.username}</h2>
+                                    <h2 className='username'>{chatUser?.username}</h2>
                                 </div>
                                 <div className='user-info'>
                                     <div className='pfp'></div>
-                                    <h4>User1</h4>
+                                    <h4 className='username'>{chatUser?.username}</h4>
                                 </div>
                                 <div className="chat-box-top">
                                     {messages.map((message) => (

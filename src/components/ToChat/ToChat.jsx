@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './Chat.css';
+import './ToChat.css';
 
-export default function Chat({chat, currentUser}) {
+export default function ToChat({chat, currentUser}) {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
@@ -18,11 +19,11 @@ export default function Chat({chat, currentUser}) {
         findUser();
     }, [currentUser, chat])
     return (
-        <div className='chat'>
-            <img className='chat-img' 
-            src={user?.profilePicture ? user.profilePicture : "https://imgur.com/t/profile_picture/e5sCZrq"} 
-            alt="pfp" />
-            <span className='chat-name'>{user?.username}</span>
+    <Link to={`/directmessage`} >
+        <div className='to-chat'>
+                <div className='to-chat-img'></div>
+                <span className='to-chat-name'>{user?.username}</span>
         </div>
+    </Link>
     )
 }

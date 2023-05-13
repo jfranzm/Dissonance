@@ -1,15 +1,18 @@
-.chat {
+.to-chat {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 15px;
     cursor: pointer;
-    
+    height: 70px;
 }
 
-.chat:hover {
+a {
+    text-decoration: none;
+}
+.to-chat:hover {
     background-color: #54575b
 }
-.chat-img {
+.to-chat-img {
     height: 40px;
     width: 40px;
     background-color: white;
@@ -17,6 +20,14 @@
     margin-right: 20px;
 }
 
-.chat-name {
+.to-chat-name {
     font-weight: 500;
+    color: white;
+    
+}
+
+Link {
+    text-decoration: none;
+    color: white;
+    display: flex;
 }
