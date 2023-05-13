@@ -13,7 +13,7 @@ Dissonance is a message based app that allows you to chat and play games with yo
 
 ### Landing Page
   
- ![LandingPage](Screenshot 2023-05-13 at 1.02.34 PM.png)
+ ![LandingPage](/Screenshot 2023-05-13 at 1.02.34 PM.png)
 
 ## Technologies
 
