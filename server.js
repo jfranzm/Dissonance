@@ -8,6 +8,8 @@ require('dotenv').config();
 // Connect to the database (after the dotenv)
 require('./config/database');
 
+require('./socket/index');
+
 const userRouter = require('./routes/api/users')
 const chatRouter = require('./routes/api/chats');
 const messageRouter = require('./routes/api/messages')
