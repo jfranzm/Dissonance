@@ -9,6 +9,11 @@ Dissonance is a message based app that allows you to chat and play games with yo
 
 # <a href="https://trello.com/b/9aaaaUVZ/project-4-react"> Trello<a>
 
+## Screenshots
+
+### Landing Page
+  
+ ![LandingPage](./src/assets/Screenshots/Screenshot 2023-05-13 at 1.02.34 PM.png)
 
 ## Technologies
 
