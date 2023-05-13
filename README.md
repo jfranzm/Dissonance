@@ -36,7 +36,7 @@ HTML || CSS || JavaScript || React.js || Socket.io || bcrypt || CORS || Axios ||
 
 ---
 
-1. AAU, I want to be able to play simple games in real-tiem with another user
+1. AAU, I want to be able to play simple games in real-time with another user
 2. Sending join invitation to a friend
 3. AAU, I want to be able to add other users as friends
 4. Google Auth authentication
