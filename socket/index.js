@@ -1,4 +1,4 @@
- const io = require("socket.io")(8900, {
+ const io = require("socket.io")(3000, {
     cors: {
         origin: "https://dissonancechat.herokuapp.com",
     },
@@ -44,3 +44,5 @@
 
     })
  })
+
+ module.exports = io;
