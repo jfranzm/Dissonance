@@ -1,12 +1,15 @@
-nav {
+.navbar {
     width: 100%;
     background-color: #4f565c;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    position: sticky;
-    justify-content: flex-start;
+    height: 60px;
     text-decoration: none;
     top: 0;
     z-index: 999;
+    display: flex;
+    
+}
+
+
+a {
+    color: var(--darkblue);
 }

@@ -1,3 +1,3 @@
-# MERN-Stack Infrastructure
+# Dissonance
 
-Clone this repo to provide the starter code for a comprehensive MERN-Stack project including token-based authentication.
+Dissonance is a message based app that allows you to chat and play games with your friends.

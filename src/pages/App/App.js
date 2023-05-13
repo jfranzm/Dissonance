@@ -6,6 +6,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import MainHubPage from '../MainHubPage/MainHubPage';
 import DirectMessages from '../DirectMessages/DirectMessages';
 import NavBar from '../../components/NavBar/NavBar';
+import TicTacToe from '../../components/Games/TicTacToe/TicTacToe';
 
 // Helpers
 import { getUser } from '../../utilities/services/users';
@@ -22,6 +23,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<MainHubPage user={user}/>} />
               <Route path="/directmessage" element={<DirectMessages user={user}/>}/>
+              <Route path="/tictactoe" element={<TicTacToe />} />
             </Routes>
           </>
           :
